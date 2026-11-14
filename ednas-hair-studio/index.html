@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Runs before the page paints:
+       • adds a "js" class so CSS only hides reveal-on-scroll items when JavaScript is running
+       • plays the opening animation on EVERY page load / refresh (skipped only for visitors who
+         have "reduce motion" turned on)
+       • a 6-second safety timer guarantees the intro can never block the site -->
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduce) {
+        root.classList.add('intro-active');
+        setTimeout(function () { root.classList.remove('intro-active'); }, 6000);
+      }
+    })();
+  </script>
+  <link rel="preload" as="image" href="assets/logo/ednas-logo-256.png">
+
+  <title>Ednas Hair Studio | Men's Hair Salon &amp; Grooming Studio in Thazhe Chovva, Kannur</title>
+  <meta name="description" content="Ednas Hair Studio is a men's hair salon and grooming studio on Kappad Road, Thazhe Chovva, Kannur. Traditional barbering meets modern grooming. Open every day, 9 AM – 9 PM.">
+  <meta name="theme-color" content="#090909">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+
+  <!-- Open Graph / social sharing.
+       TODO: replace YOUR-DOMAIN.example with the live website address (see README.md) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ednas Hair Studio">
+  <meta property="og:title" content="Ednas Hair Studio | Men's Hair Salon &amp; Grooming Studio, Kannur">
+  <meta property="og:description" content="Traditional barbering meets modern grooming in Thazhe Chovva, Kannur. Open every day, 9 AM – 9 PM.">
+  <meta property="og:image" content="https://YOUR-DOMAIN.example/assets/images/og-image.jpg">
+  <meta property="og:image:alt" content="Ednas Hair Studio logo">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Fonts: elegant serif for headings, clean sans for text. If they cannot load, system fonts are used. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&display=swap">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Local business structured data. Only verified details are included.
+       The telephone number is added automatically by script.js once it is set in site-data.js. -->
+  <script type="application/ld+json" id="structured-data">
+  {
+    "@context": "https://schema.org",
+    "@type": "HairSalon",
+    "name": "Ednas Hair Studio",
+    "description": "Men's hair salon and grooming studio combining traditional barbering with modern grooming.",
+    "slogan": "Good Hair Build Confidence",
+    "foundingDate": "2026-10-21",
+    "image": "https://YOUR-DOMAIN.example/assets/images/og-image.jpg",
+    "logo": "https://YOUR-DOMAIN.example/assets/logo/ednas-logo-512.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Ground Floor, Coral Building, Kappad Road",
+      "addressLocality": "Thazhe Chovva, Kannur",
+      "addressRegion": "Kerala",
+      "addressCountry": "IN"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "09:00",
+      "closes": "21:00"
+    },
+    "hasMap": "https://www.google.com/maps/place/EDNAS+HAIR+STUDIO,+Thazhe+Chovva,+coral+building,+Kappad+road,+Kannur,+Keralam+670018/data=!4m2!3m1!1s0x3ba42328a411d7a7:0x7ca2504858e9ce65",
+    "sameAs": ["https://www.instagram.com/ednas_hairstudio/"]
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- ===================== OPENING ANIMATION =====================
+       Two identical halves of the logo scene; they slide apart to reveal the site.
+       Tap/click anywhere (or press Esc) to skip. Delete this whole block to remove the intro. -->
+  <div class="intro" id="intro" aria-hidden="true">
+    <div class="intro__half intro__half--left">
+      <div class="intro__stage">
+        <div class="intro__mark">
+          <img class="intro__logo" src="assets/logo/ednas-logo-256.png" width="256" height="256" alt="">
+          <svg class="intro__ring" viewBox="0 0 100 100"><circle cx="50" cy="50" r="49.5" pathLength="100"/></svg>
+        </div>
+        <p class="intro__tagline">Good Hair Build Confidence</p>
+      </div>
+    </div>
+    <div class="intro__half intro__half--right">
+      <div class="intro__stage">
+        <div class="intro__mark">
+          <img class="intro__logo" src="assets/logo/ednas-logo-256.png" width="256" height="256" alt="">
+          <svg class="intro__ring" viewBox="0 0 100 100"><circle cx="50" cy="50" r="49.5" pathLength="100"/></svg>
+        </div>
+        <p class="intro__tagline">Good Hair Build Confidence</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Icon sprite: every icon on the page is drawn from here with <use href="#icon-name"> -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <!-- Service icons -->
+      <symbol id="icon-scissors" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.6"/><circle cx="6" cy="18" r="2.6"/><path d="M8 7.8 20 18M8 16.2 20 6"/></symbol>
+      <symbol id="icon-razor" viewBox="0 0 24 24"><rect x="3" y="7.5" width="18" height="9" rx="1.5"/><circle cx="12" cy="12" r="1.6"/><path d="M6 12h2.6M15.4 12H18"/></symbol>
+      <symbol id="icon-drop" viewBox="0 0 24 24"><path d="M12 3s6 6.2 6 10.5a6 6 0 0 1-12 0C6 9.2 12 3 12 3z"/><path d="M9.5 14a2.5 2.5 0 0 0 2.5 2.5"/></symbol>
+      <symbol id="icon-lotus" viewBox="0 0 24 24"><path d="M12 20c-4 0-7-3-7-7 4 0 7 2.5 7 7zM12 20c4 0 7-3 7-7-4 0-7 2.5-7 7zM12 20c-2.5-2-3.5-5-3.5-8.5C8.5 8 10 5.5 12 4c2 1.5 3.5 4 3.5 7.5 0 3.5-1 6.5-3.5 8.5z"/></symbol>
+      <symbol id="icon-sparkle" viewBox="0 0 24 24"><path d="M11 3l1.9 5.1L18 10l-5.1 1.9L11 17l-1.9-5.1L4 10l5.1-1.9z"/><path d="M19 15.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></symbol>
+      <symbol id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5V5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/></symbol>
+      <symbol id="icon-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.5 0 2-1 1.5-2-.6-1.2.2-2.5 1.6-2.5H17a4 4 0 0 0 4-4C21 6.6 17 3 12 3z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7.5" r="1"/><circle cx="14.5" cy="7.5" r="1"/></symbol>
+      <symbol id="icon-waves" viewBox="0 0 24 24"><path d="M3 9c2-2.2 4 2.2 6 0s4 2.2 6 0 4 2.2 6 0M3 15c2-2.2 4 2.2 6 0s4 2.2 6 0 4 2.2 6 0"/></symbol>
+      <!-- Interface icons -->
+      <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5a7 7 0 0 0-14 0C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+      <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+      <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+      <symbol id="icon-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></symbol>
+      <symbol id="icon-whatsapp" viewBox="0 0 24 24"><path d="M3 21l1.6-4.7A8.5 8.5 0 1 1 8 19.6z"/><path d="M9 8.8c0 3 3.2 6.2 6.2 6.2l1-1.5-2-1-1 .7a4 4 0 0 1-2-2l.7-1-1-2z"/></symbol>
+      <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    </defs>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <header class="site-header" id="site-header">
+    <div class="container site-header__inner">
+
+      <a class="brand" href="#home" aria-label="Ednas Hair Studio, back to top">
+        <img class="brand__logo" src="assets/logo/ednas-logo-96.png" width="96" height="96" alt="">
+        <span class="brand__text">
+          <span class="brand__name">Ednas</span>
+          <span class="brand__sub">Hair Studio</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+
+      <nav class="nav" id="site-nav" aria-label="Main">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="#home">Home</a></li>
+          <li><a class="nav__link" href="#about">About</a></li>
+          <li><a class="nav__link" href="#services">Services</a></li>
+          <li><a class="nav__link" href="#offers">Offers</a></li>
+          <li><a class="nav__link" href="#gallery">Gallery</a></li>
+          <li><a class="nav__link" href="#contact">Contact</a></li>
+        </ul>
+
+        <!-- Phone menu only (hidden on desktop) -->
+        <div class="nav__extra">
+          <p><svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg> Open every day, 9 AM – 9 PM</p>
+          <a class="btn btn--primary" href="https://www.google.com/maps/place/EDNAS+HAIR+STUDIO,+Thazhe+Chovva,+coral+building,+Kappad+road,+Kannur,+Keralam+670018/data=!4m2!3m1!1s0x3ba42328a411d7a7:0x7ca2504858e9ce65" target="_blank" rel="noopener">
+            <span>Get Directions</span>
+            <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg>
+          </a>
+        </div>
+      </nav>
+
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero__media">
+        <img
+          src="assets/images/interior-mirror-1000.webp"
+          srcset="assets/images/interior-mirror-640.webp 640w, assets/images/interior-mirror-1000.webp 1000w"
+          sizes="(min-width: 900px) 52vw, 100vw"
+          width="1000" height="1769"
+          fetchpriority="high"
+          alt="Backlit mirror and brown leather barber chairs inside Ednas Hair Studio">
+      </div>
+
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <p class="eyebrow">Men's Hair Salon &amp; Grooming Studio</p>
+          <h1 class="hero__title" id="hero-title">Where good hair builds <em>confidence.</em></h1>
+          <p class="hero__lead">Traditional barbering meets modern grooming in the heart of Thazhe Chovva, Kannur. Sit back, relax and leave looking your sharpest.</p>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="https://www.google.com/maps/place/EDNAS+HAIR+STUDIO,+Thazhe+Chovva,+coral+building,+Kappad+road,+Kannur,+Keralam+670018/data=!4m2!3m1!1s0x3ba42328a411d7a7:0x7ca2504858e9ce65" target="_blank" rel="noopener">
+              <span>Find Our Studio</span>
+              <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg>
+            </a>
+            <a class="btn btn--outline" href="#services">Explore Services</a>
+          </div>
+        </div>
+
+        <ul class="hero__facts">
+          <li><svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg> Open every day, 9 AM – 9 PM</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#icon-pin"/></svg> Kappad Road, Thazhe Chovva</li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- ===================== ABOUT ===================== -->
+    <section class="section section--light" id="about" aria-labelledby="about-title">
+      <div class="container about">
+
+        <div class="about__media reveal">
+          <img class="about__main"
+               src="assets/images/storefront-640.webp"
+               srcset="assets/images/storefront-640.webp 640w, assets/images/storefront-1000.webp 1000w"
+               sizes="(min-width: 900px) 40vw, 90vw"
+               width="640" height="675" loading="lazy"
+               alt="Glass shopfront of Ednas Hair Studio with its illuminated name sign">
+          <img class="about__accent"
+               src="assets/images/signboard-logo-640.webp"
+               width="640" height="1139" loading="lazy"
+               alt="Round Ednas Hair Studio signboard">
+        </div>
+
+        <div class="about__text reveal">
+          <p class="eyebrow eyebrow--dark">About the studio</p>
+          <h2 class="section-title" id="about-title">Traditional barbering. <em>Modern grooming.</em></h2>
+          <p>Ednas Hair Studio is a men's hair salon and grooming studio in Thazhe Chovva, Kannur. We opened on 21 October 2026 with a simple idea: bring the craft of traditional barbering together with the comfort and care of modern grooming.</p>
+          <p>From a sharp haircut and a well-defined beard to a relaxing head massage or facial, everything happens in one clean, welcoming space, so you can walk in, sit back and walk out feeling like yourself, only better.</p>
+
+          <dl class="facts">
+            <div class="facts__row"><dt>Opened</dt><dd>21 October 2026</dd></div>
+            <div class="facts__row"><dt>Find us</dt><dd>Ground Floor, Coral Building, Kappad Road</dd></div>
+            <div class="facts__row"><dt>Hours</dt><dd>Every day, 9 AM – 9 PM</dd></div>
+          </dl>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ===================== SERVICES ===================== -->
+    <section class="section section--charcoal" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Services</p>
+          <h2 class="section-title" id="services-title">Everything for a <em>complete</em> look</h2>
+          <p class="section-lead">Grooming essentials and little luxuries, all in one studio.</p>
+        </header>
+
+        <!-- Filled in by script.js from site-data.js -->
+        <ul class="services" id="services-list"></ul>
+      </div>
+    </section>
+
+
+    <!-- ===================== SPECIAL OFFERS ===================== -->
+    <section class="section section--black" id="offers" aria-labelledby="offers-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Special offers</p>
+          <h2 class="section-title" id="offers-title">Grooming packages at <em>special prices</em></h2>
+          <p class="section-lead">Special grooming packages, available now at Ednas Hair Studio</p>
+          <!-- Draft notice: shown by script.js only while offersConfirmed is false in site-data.js -->
+          <!-- <p class="draft-note" id="offers-draft-note" hidden>Draft: these offers are awaiting confirmation by the studio owners.</p> -->
+        </header>
+
+        <!-- Filled in by script.js from site-data.js -->
+        <div class="offers" id="offers-list"></div>
+
+        <p class="offers__cta reveal">
+          <a class="btn btn--primary" href="https://www.google.com/maps/place/EDNAS+HAIR+STUDIO,+Thazhe+Chovva,+coral+building,+Kappad+road,+Kannur,+Keralam+670018/data=!4m2!3m1!1s0x3ba42328a411d7a7:0x7ca2504858e9ce65" target="_blank" rel="noopener">
+            <span>Visit the Studio</span>
+            <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg>
+          </a>
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ===================== GALLERY ===================== -->
+    <section class="section section--light" id="gallery" aria-labelledby="gallery-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow eyebrow--dark">Gallery</p>
+          <h2 class="section-title" id="gallery-title">Inside <em>Ednas</em></h2>
+          <p class="section-lead">A look at the studio, the chairs and the craft. Tap any photo to enlarge it.</p>
+        </header>
+
+        <!-- Filled in by script.js from site-data.js -->
+        <ul class="gallery" id="gallery-grid"></ul>
+      </div>
+    </section>
+
+
+    <!-- ===================== WHY CHOOSE US ===================== -->
+    <section class="section section--charcoal" id="why" aria-labelledby="why-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Why choose us</p>
+          <h2 class="section-title" id="why-title">Grooming, the way it <em>should feel</em></h2>
+        </header>
+
+        <ol class="why">
+          <li class="why__item reveal">
+            <span class="why__num" aria-hidden="true">01</span>
+            <h3>Traditional meets modern</h3>
+            <p>Classic barbering services alongside modern grooming experiences, all under one roof.</p>
+          </li>
+          <li class="why__item reveal">
+            <span class="why__num" aria-hidden="true">02</span>
+            <h3>A welcoming studio</h3>
+            <p>A clean, comfortable space designed to help you relax from the moment you sit down.</p>
+          </li>
+          <li class="why__item reveal">
+            <span class="why__num" aria-hidden="true">03</span>
+            <h3>Your style, your way</h3>
+            <p>Every look is personal. Tell us what you have in mind and we'll shape it around you.</p>
+          </li>
+          <li class="why__item reveal">
+            <span class="why__num" aria-hidden="true">04</span>
+            <h3>Easy to find</h3>
+            <p>On the ground floor of Coral Building, Kappad Road, Thazhe Chovva. Open every day from 9 AM to 9 PM.</p>
+          </li>
+        </ol>
+
+        <blockquote class="tagline reveal">
+          <p>Good Hair Build Confidence</p>
+        </blockquote>
+      </div>
+    </section>
+
+
+    <!-- ===================== LOCATION & CONTACT ===================== -->
+    <section class="section section--black" id="contact" aria-labelledby="contact-title">
+      <div class="container contact">
+
+        <div class="contact__info reveal">
+          <p class="eyebrow">Location &amp; contact</p>
+          <h2 class="section-title" id="contact-title">Come and <em>visit us</em></h2>
+
+          <address class="contact__block">
+            <svg class="icon icon--lg" aria-hidden="true"><use href="#icon-pin"/></svg>
+            <div>
+              <strong>Ednas Hair Studio</strong><br>
+              Ground Floor, Coral Building,<br>
+              Kappad Road, Thazhe Chovva,<br>
+              Kannur, Kerala, India.
+            </div>
+          </address>
+
+          <div class="contact__block">
+            <svg class="icon icon--lg" aria-hidden="true"><use href="#icon-clock"/></svg>
+            <div>
+              <strong>Opening hours</strong><br>
+              Every day, 9 AM – 9 PM
+            </div>
+          </div>
+
+          <div class="contact__block">
+            <svg class="icon icon--lg" aria-hidden="true"><use href="#icon-phone"/></svg>
+            <div>
+              <strong>Phone</strong><br>
+              <!-- script.js turns this into a tap-to-call link once a number is set in site-data.js -->
+              <span id="phone-slot"><span class="placeholder">[Phone number to be confirmed by the studio]</span></span>
+            </div>
+          </div>
+
+          <div class="contact__actions">
+            <a class="btn btn--outline" href="https://www.google.com/maps/place/EDNAS+HAIR+STUDIO,+Thazhe+Chovva,+coral+building,+Kappad+road,+Kannur,+Keralam+670018/data=!4m2!3m1!1s0x3ba42328a411d7a7:0x7ca2504858e9ce65" target="_blank" rel="noopener">
+              <svg class="icon" aria-hidden="true"><use href="#icon-pin"/></svg>
+              <span>Get Directions</span>
+            </a>
+            <a class="btn btn--outline" href="https://www.instagram.com/ednas_hairstudio/" target="_blank" rel="noopener">
+              <svg class="icon" aria-hidden="true"><use href="#icon-instagram"/></svg>
+              <span>Instagram</span>
+            </a>
+            <!-- Hidden until a phone number is set in site-data.js; opens the phone's dialler -->
+            <!-- <a class="btn btn--outline" id="call-btn" href="#contact" hidden>
+              <svg class="icon" aria-hidden="true"><use href="#icon-phone"/></svg>
+              <span>Call Now</span>
+            </a> -->
+            <!-- Hidden until a WhatsApp number is set in site-data.js; opens WhatsApp -->
+            <a class="btn btn--outline" id="whatsapp-btn" href="#contact" target="_blank" rel="noopener" hidden>
+              <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
+              <span>WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <figure class="contact__media reveal">
+          <img src="assets/images/storefront-1000.webp"
+               srcset="assets/images/storefront-640.webp 640w, assets/images/storefront-1000.webp 1000w"
+               sizes="(min-width: 900px) 45vw, 90vw"
+               width="1000" height="1054" loading="lazy"
+               alt="Ednas Hair Studio shopfront on the ground floor of Coral Building">
+          <figcaption>Look for the Ednas sign on the ground floor of Coral Building.</figcaption>
+        </figure>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container footer__grid">
+
+      <div class="footer__brand">
+        <a class="brand" href="#home" aria-label="Ednas Hair Studio, back to top">
+          <img class="brand__logo" src="assets/logo/ednas-logo-96.png" width="96" height="96" alt="">
+          <span class="brand__text">
+            <span class="brand__name">Ednas</span>
+            <span class="brand__sub">Hair Studio</span>
+          </span>
+        </a>
+        <p class="footer__tagline">Good Hair Build Confidence</p>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer">
+        <h2 class="footer__heading">Explore</h2>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#offers">Offers</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__contact">
+        <h2 class="footer__heading">Visit</h2>
+        <p>Ground Floor, Coral Building,<br>Kappad Road, Thazhe Chovva,<br>Kannur, Kerala, India.</p>
+        <p><a href="https://www.instagram.com/ednas_hairstudio/" target="_blank" rel="noopener">@ednas_hairstudio on Instagram</a></p>
+      </div>
+
+    </div>
+
+    <div class="container footer__bottom">
+      <p>&copy; <span id="year">2026</span> Ednas Hair Studio. All rights reserved.</p>
+    </div>
+  </footer>
+
+
+  <!-- Photo viewer used by the gallery -->
+  <dialog class="lightbox" id="lightbox" aria-label="Photo viewer">
+    <button class="lightbox__close" id="lightbox-close" type="button" aria-label="Close photo">&times;</button>
+    <img class="lightbox__img" id="lightbox-img" alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p class="lightbox__caption" id="lightbox-caption"></p>
+  </dialog>
+
+  <noscript>
+    <p class="noscript">Please enable JavaScript to see the services, offers and photo gallery. You can still find us at Ground Floor, Coral Building, Kappad Road, Thazhe Chovva, Kannur, open every day 9 AM – 9 PM.</p>
+  </noscript>
+
+  <script src="site-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
