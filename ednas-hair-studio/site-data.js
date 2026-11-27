@@ -97,6 +97,31 @@ const SITE_DATA = {
 
 
   /* ------------------------------------------------------------------------
+     3b. HAIRSTYLES
+     ------------------------------------------------------------------------
+     The hairstyle photos shown in the "Hairstyles" section. Files live in
+     assets/images/hairstyles/. The style name is printed on each photo, and the
+     "name" below is used as its description for screen readers.
+     To add a style: copy one { ... } line, add a comma, change the file names.
+     To remove one: delete its line.
+     "width" / "height" = pixel size of "src" (keeps the page from jumping).
+     ------------------------------------------------------------------------ */
+  hairstyles: [
+    { name: "Taper Cut", src: "assets/images/hairstyles/taper-cut-640.webp", full: "assets/images/hairstyles/taper-cut-1000.webp", width: 640, height: 800 },
+    { name: "Side Part", src: "assets/images/hairstyles/side-part-640.webp", full: "assets/images/hairstyles/side-part-1000.webp", width: 640, height: 859 },
+    { name: "Mullet", src: "assets/images/hairstyles/mullet-640.webp", full: "assets/images/hairstyles/mullet-1000.webp", width: 640, height: 863 },
+    { name: "Curly Top", src: "assets/images/hairstyles/curly-top-640.webp", full: "assets/images/hairstyles/curly-top-1000.webp", width: 640, height: 862 },
+    { name: "Fringe (Bangs)", src: "assets/images/hairstyles/fringe-bangs-640.webp", full: "assets/images/hairstyles/fringe-bangs-1000.webp", width: 640, height: 864 },
+    { name: "Quiff Haircut", src: "assets/images/hairstyles/quiff-640.webp", full: "assets/images/hairstyles/quiff-1000.webp", width: 640, height: 857 },
+    { name: "Design Cut", src: "assets/images/hairstyles/design-cut-640.webp", full: "assets/images/hairstyles/design-cut-1000.webp", width: 640, height: 848 },
+    { name: "Undercut", src: "assets/images/hairstyles/undercut-640.webp", full: "assets/images/hairstyles/undercut-1000.webp", width: 640, height: 858 },
+    { name: "Fade Haircuts", src: "assets/images/hairstyles/fade-haircuts-640.webp", full: "assets/images/hairstyles/fade-haircuts-1000.webp", width: 640, height: 640 },
+    { name: "Shaggy Cut", src: "assets/images/hairstyles/shaggy-cut-640.webp", full: "assets/images/hairstyles/shaggy-cut-1000.webp", width: 640, height: 800 },
+    { name: "Faux Hawk", src: "assets/images/hairstyles/faux-hawk-640.webp", full: "assets/images/hairstyles/faux-hawk-1000.webp", width: 640, height: 800 }
+  ],
+
+
+  /* ------------------------------------------------------------------------
      4. GALLERY
      ------------------------------------------------------------------------
      All photographs are the studio's own. Files live in assets/images/.
