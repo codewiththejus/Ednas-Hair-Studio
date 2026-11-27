@@ -171,7 +171,36 @@
     });
   }
 
+  function renderHairstyles() {
+    var grid = document.getElementById("hairstyles-grid");
+    if (!grid || !Array.isArray(SITE_DATA.hairstyles)) return;
+
+    SITE_DATA.hairstyles.forEach(function (style) {
+      var item = make("li", "hairstyle reveal" + (style.width === style.height ? " hairstyle--wide" : ""));
+
+      var link = make("a", "gallery__link hairstyle__link");
+      link.href = style.full || style.src;
+      link.target = "_blank";
+      link.rel = "noopener";
+      link.setAttribute("data-caption", style.name);
+      link.setAttribute("aria-label", "Enlarge hairstyle: " + style.name);
+
+      var img = make("img", "hairstyle__img");
+      img.src = style.src;
+      img.width = style.width;
+      img.height = style.height;
+      img.alt = style.name + " hairstyle";
+      img.loading = "lazy";
+      img.decoding = "async";
+      link.appendChild(img);
+
+      item.appendChild(link);
+      grid.appendChild(item);
+    });
+  }
+
   renderServices();
+  renderHairstyles();
   renderOffers();
   renderGallery();
 
@@ -241,7 +270,20 @@
 
     // Close the menu after choosing a link
     nav.addEventListener("click", function (event) {
-      if (event.target.closest("a")) setMenu(false);
+      var link = event.target.closest("a");
+      if (!link) return;
+      var hash = link.getAttribute("href") || "";
+      var target = hash.charAt(0) === "#" && hash.length > 1 ? document.getElementById(hash.slice(1)) : null;
+      setMenu(false);
+      if (target) {
+        // Phones ignore the jump while page scrolling is still locked by the open menu,
+        // so unlock first and scroll on the next frame.
+        event.preventDefault();
+        window.setTimeout(function () {
+          target.scrollIntoView();
+          if (history.replaceState) history.replaceState(null, "", hash);
+        }, 60);
+      }
     });
 
     // Close with the Escape key
@@ -294,18 +336,21 @@
   var lightboxImg = document.getElementById("lightbox-img");
   var lightboxCaption = document.getElementById("lightbox-caption");
   var lightboxClose = document.getElementById("lightbox-close");
-  var grid = document.getElementById("gallery-grid");
+  var photoGrids = [document.getElementById("gallery-grid"), document.getElementById("hairstyles-grid")]
+    .filter(Boolean);
 
-  if (lightbox && typeof lightbox.showModal === "function" && grid) {
-    grid.addEventListener("click", function (event) {
-      var link = event.target.closest(".gallery__link");
-      if (!link) return;
-      event.preventDefault();                       // use the viewer instead of opening a new tab
-      var thumb = link.querySelector("img");
-      lightboxImg.src = link.href;
-      lightboxImg.alt = thumb ? thumb.alt : "";
-      lightboxCaption.textContent = link.getAttribute("data-caption") || "";
-      lightbox.showModal();
+  if (lightbox && typeof lightbox.showModal === "function" && photoGrids.length) {
+    photoGrids.forEach(function (grid) {
+      grid.addEventListener("click", function (event) {
+        var link = event.target.closest(".gallery__link");
+        if (!link) return;
+        event.preventDefault();                     // use the viewer instead of opening a new tab
+        var thumb = link.querySelector("img");
+        lightboxImg.src = link.href;
+        lightboxImg.alt = thumb ? thumb.alt : "";
+        lightboxCaption.textContent = link.getAttribute("data-caption") || "";
+        lightbox.showModal();
+      });
     });
 
     lightboxClose.addEventListener("click", function () { lightbox.close(); });
